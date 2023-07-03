@@ -43,7 +43,8 @@ install:
 ifeq ($(INSTALL_DIR),)
 	@([ -t 2 ] && printf "\033[0;31m[ERROR]\033[0m" || printf "[ERROR]") 1>&2 && printf " No INSTALL_DIR given.\n" 1>&2 && false
 else
-	mkdir -p $(INSTALL_DIR)/lib $(INSTALL_DIR)/include
+	mkdir -p $(INSTALL_DIR)/lib $(INSTALL_DIR)/include $(INSTALL_DIR)/src
 	NAME=$(INSTALL_DIR)/lib/libft_branch.a $(MAKE)
 	cp -f include/*.h $(INSTALL_DIR)/include
+	cp -rf src/* $(INSTALL_DIR)/src
 endif
