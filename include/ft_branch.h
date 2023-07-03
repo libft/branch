@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 18:25:02 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2023/07/02 20:03:15 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2023/07/03 16:18:28 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct s_ft_branch
 	size_t		branch_count;
 }	t_ft_branch;
 
+typedef struct s_ft_branch_log
+{
+	struct s_ft_branch_log	*next;
+	const t_ft_branch		*branch;
+	size_t					selected;
+}	t_ft_branch_log;
+
 /**
  * @brief to test all branches, in mock functions
  *
@@ -32,7 +39,7 @@ typedef struct s_ft_branch
  * 0: everything is ok
  * 1 to branch_count - 1: failure, or successful partially
  */
-size_t	ft_branch(const t_ft_branch *input);
+size_t			ft_branch(const t_ft_branch *input);
 
 /**
  * @brief check if all branch was normal case
@@ -40,7 +47,14 @@ size_t	ft_branch(const t_ft_branch *input);
  * @return true on all ft_branch() was 0. you may exit with any exit code
  * @return false on some ft_branch() was not 0. must exit with code 126 or 127
  */
-bool	ft_branch_all_normal(void);
+bool			ft_branch_all_normal(void);
+
+/**
+ * @brief get all previous branch() logs
+ *
+ * @return t_ft_branch_log* head of linked list
+ */
+t_ft_branch_log	*ft_branch_log(void);
 
 # define FT_BRANCH_OK 127
 # define FT_BRANCH_ERROR 126

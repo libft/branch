@@ -1,6 +1,11 @@
 start
 first failed
+malloc: malloc() failure
 first ok
 second failed
+malloc: normal case
+malloc: malloc() failure
 second ok
 end
+malloc: normal case
+malloc: normal case

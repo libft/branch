@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 19:51:33 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2023/07/02 20:14:02 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2023/07/03 16:21:36 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,26 @@ void	test(void)
 	puts("end");
 }
 
+static void	print(void)
+{
+	t_ft_branch_log	*node;
+
+	node = ft_branch_log();
+	while (node)
+	{
+		printf(
+			"%s: %s\n",
+			node->branch->name,
+			node->branch->descriptions[node->selected]);
+		node = node->next;
+	}
+}
+
 int	main(void)
 {
 	setvbuf(stdout, NULL, _IOLBF, 0);
 	test();
+	print();
 	if (ft_branch_all_normal())
 		return (EXIT_SUCCESS);
 	return (FT_BRANCH_OK);
